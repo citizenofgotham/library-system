@@ -6,6 +6,8 @@ body {
 
 h1 {
     color: #203050;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 #library {
@@ -18,34 +20,69 @@ h1 {
 
 .book {
     border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    width: 200px;
+    border-radius: 8px;
+    padding: 20px;
+    width: 250px;
     background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .book h2 {
     font-size: 18px;
     margin: 10px 0;
+    color: #333;
 }
 
-.book p{
+.book p {
     margin: 5px 0;
+    font-size: 14px;
+    color: #555;
 }
 
-button{
+button {
     padding: 8px 12px;
     border: none;
-    border-radius:5px;
-    cursor:pointer;
+    border-radius: 5px;
+    cursor: pointer;
     font-size: 14px;
     margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.borrow{
-    background-color: #349Bdb;
-    color:white;
+button:hover {
+    transform: scale(1.05);
 }
-.return{
+
+.borrow {
+    background-color: #349Bdb;
+    color: white;
+}
+
+.borrow:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.borrow:hover:not(:disabled) {
+    background-color: #287bb5;
+}
+
+.return {
     background-color: #2ecc71;
+    color: white;
+}
+
+.return:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.return:hover:not(:disabled) {
+    background-color: #27ae60;
 }
