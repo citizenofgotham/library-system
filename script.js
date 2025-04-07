@@ -36,6 +36,7 @@ function displayBooks() {
             <p><strong>Status:</strong> ${book.isAvailable ? "Available" : "Borrowed"}</p>
             <button class="borrow" ${book.isAvailable ? "" : "disabled"} onclick="borrowBook(${book.id})">Borrow</button>
             <button class="return" ${book.isAvailable ? "disabled" : ""} onclick="returnBook(${book.id})">Return</button>
+            <button class="delete" onclick="deleteBook(${book.id})">Delete</button>
         `;
 
         libraryDiv.appendChild(bookDiv);
@@ -60,14 +61,14 @@ function displayBooks() {
 // Function to add a new book
 function addBook(title, author, year) {
     const newBook = {
-        id: books.length + 1,
+        id: Date.now(), // Unique ID based on timestamp
         title,
         author,
         year,
         isAvailable: true
     };
     books.push(newBook);
-    displayBooks(); // Refresh display
+    displayBooks();
 }
 
 // Function to borrow a book
@@ -75,7 +76,7 @@ function borrowBook(bookId) {
     const book = books.find(book => book.id === bookId);
     if (book && book.isAvailable) {
         book.isAvailable = false;
-        displayBooks(); // Update the display
+        displayBooks();
     }
 }
 
@@ -84,9 +85,15 @@ function returnBook(bookId) {
     const book = books.find(book => book.id === bookId);
     if (book && !book.isAvailable) {
         book.isAvailable = true;
-        displayBooks(); // Update the display
+        displayBooks();
     }
 }
 
-// Initial display of books and form
+// 🗑️ Function to delete a book
+function deleteBook(bookId) {
+    books = books.filter(book => book.id !== bookId);
+    displayBooks();
+}
+
+// Initial display
 displayBooks();
