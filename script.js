@@ -37,4 +37,3 @@ let books = [
   
   // Initial display of books
   displayBooks();
-
