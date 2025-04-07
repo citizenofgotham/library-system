@@ -1,14 +1,19 @@
-// Sample books in the library
-let books = [
+// Load books from localStorage or use default ones
+let books = JSON.parse(localStorage.getItem("books")) || [
     { id: 1, title: "The Great Gatsby", author: "F. Scott Fitzgerald", year: 1925, isAvailable: true },
     { id: 2, title: "1984", author: "George Orwell", year: 1949, isAvailable: true },
     { id: 3, title: "To Kill a Mockingbird", author: "Harper Lee", year: 1960, isAvailable: true }
 ];
 
+// Save books to localStorage
+function saveBooks() {
+    localStorage.setItem("books", JSON.stringify(books));
+}
+
 // Function to render books on the page
 function displayBooks() {
     const libraryDiv = document.getElementById("library");
-    libraryDiv.innerHTML = ""; // Clear existing content
+    libraryDiv.innerHTML = "";
 
     // Insert Add Book Form at the top
     const formHTML = `
@@ -44,7 +49,7 @@ function displayBooks() {
 
     // Attach form submission logic
     const form = document.getElementById("addBookForm");
-    form.addEventListener("submit", function(event) {
+    form.addEventListener("submit", function (event) {
         event.preventDefault();
 
         const title = document.getElementById("title").value.trim();
@@ -61,13 +66,14 @@ function displayBooks() {
 // Function to add a new book
 function addBook(title, author, year) {
     const newBook = {
-        id: Date.now(), // Unique ID based on timestamp
+        id: Date.now(), // Unique ID
         title,
         author,
         year,
         isAvailable: true
     };
     books.push(newBook);
+    saveBooks();
     displayBooks();
 }
 
@@ -76,6 +82,7 @@ function borrowBook(bookId) {
     const book = books.find(book => book.id === bookId);
     if (book && book.isAvailable) {
         book.isAvailable = false;
+        saveBooks();
         displayBooks();
     }
 }
@@ -85,13 +92,15 @@ function returnBook(bookId) {
     const book = books.find(book => book.id === bookId);
     if (book && !book.isAvailable) {
         book.isAvailable = true;
+        saveBooks();
         displayBooks();
     }
 }
 
-// 🗑️ Function to delete a book
+// Function to delete a book
 function deleteBook(bookId) {
     books = books.filter(book => book.id !== bookId);
+    saveBooks();
     displayBooks();
 }
 
