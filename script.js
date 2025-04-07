@@ -10,6 +10,21 @@ function displayBooks() {
     const libraryDiv = document.getElementById("library");
     libraryDiv.innerHTML = ""; // Clear existing content
 
+    // Insert Add Book Form at the top
+    const formHTML = `
+        <div id="formContainer">
+            <h3>Add a New Book</h3>
+            <form id="addBookForm">
+                <input type="text" id="title" placeholder="Title" required />
+                <input type="text" id="author" placeholder="Author" required />
+                <input type="number" id="year" placeholder="Year" required />
+                <button type="submit">Add Book</button>
+            </form>
+        </div>
+    `;
+    libraryDiv.innerHTML += formHTML;
+
+    // Then list books
     books.forEach(book => {
         let bookDiv = document.createElement("div");
         bookDiv.classList.add("book");
@@ -25,6 +40,34 @@ function displayBooks() {
 
         libraryDiv.appendChild(bookDiv);
     });
+
+    // Attach form submission logic
+    const form = document.getElementById("addBookForm");
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const title = document.getElementById("title").value.trim();
+        const author = document.getElementById("author").value.trim();
+        const year = parseInt(document.getElementById("year").value);
+
+        if (title && author && year) {
+            addBook(title, author, year);
+            form.reset();
+        }
+    });
+}
+
+// Function to add a new book
+function addBook(title, author, year) {
+    const newBook = {
+        id: books.length + 1,
+        title,
+        author,
+        year,
+        isAvailable: true
+    };
+    books.push(newBook);
+    displayBooks(); // Refresh display
 }
 
 // Function to borrow a book
@@ -45,5 +88,5 @@ function returnBook(bookId) {
     }
 }
 
-// Initial display of books
+// Initial display of books and form
 displayBooks();
