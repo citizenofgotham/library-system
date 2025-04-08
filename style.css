@@ -13,7 +13,7 @@ h1 {
 #library {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 20px;  /* Space between cards */
+    gap: 5px;  /* Space between cards */
     margin-top: 20px;
     justify-content: center; /* Ensures books are centered */
     padding: 0 20px; /* Add padding around the library container */
