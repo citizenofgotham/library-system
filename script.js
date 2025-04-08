@@ -84,5 +84,20 @@ function deleteBook(bookId) {
     displayBooks();
 }
 
+// Function to add a new book
+function addBook(title, author, year) {
+    const newBook = {
+        id: Date.now(), // Generate a unique ID using the current timestamp
+        title: title,
+        author: author,
+        year: year,
+        isAvailable: true // New books are available by default
+    };
+
+    books.push(newBook); // Add the new book to the books array
+    saveBooks(); // Save the updated list to localStorage
+    displayBooks(); // Re-render the books after adding the new one
+}
+
 // Initial display
 displayBooks();
