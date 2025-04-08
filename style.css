@@ -18,10 +18,11 @@ h1 {
     margin-top: 20px;
 }
 
-formContainer {
-    margin-bottom: 100px;
+#formContainer {
+    margin-bottom: 40px;
     text-align: center;
 }
+
 
 .book {
     border: 1px solid #ddd;
