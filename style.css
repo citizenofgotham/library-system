@@ -21,10 +21,10 @@ h1 {
 }
 
 #formContainer {
-    margin-bottom: 60px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #ccc;
+    margin-bottom: 40px;
+    padding-bottom: 0;
 }
+
 
 .book {
     border: 1px solid #ddd;
