@@ -13,26 +13,27 @@ h1 {
 #library {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 20px;
+    gap: 20px;  /* Space between cards */
     margin-top: 20px;
     justify-content: center; /* Ensures books are centered */
+    padding: 0 20px; /* Add padding around the library container */
 }
 
 .book {
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 20px;
-    width: 100%; /* Ensures books fill the column */
+    padding: 15px;  /* Reduced padding for smaller cards */
+    width: 220px;   /* Adjusted width for smaller cards */
     background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: 0 auto;  /* Center align the cards */
 }
 
 .book:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
-
 
 .book h2 {
     font-size: 18px;
