@@ -10,26 +10,30 @@ function saveBooks() {
     localStorage.setItem("books", JSON.stringify(books));
 }
 
-// Function to render books on the page
 function displayBooks() {
-    const libraryDiv = document.getElementById("library");
-    libraryDiv.innerHTML = "";
+    const mainContainer = document.getElementById("mainContainer");
+    mainContainer.innerHTML = "";
 
-    // Insert Add Book Form at the top
-    const formHTML = `
-        <div id="formContainer">
-            <h3>Add a New Book</h3>
-            <form id="addBookForm">
-                <input type="text" id="title" placeholder="Title" required />
-                <input type="text" id="author" placeholder="Author" required />
-                <input type="number" id="year" placeholder="Year" required />
-                <button type="submit">Add Book</button>
-            </form>
-        </div>
+    // Form at the top
+    const formContainer = document.createElement("div");
+    formContainer.id = "formContainer";
+    formContainer.innerHTML = `
+        <h3>Add a New Book</h3>
+        <form id="addBookForm">
+            <input type="text" id="title" placeholder="Title" required />
+            <input type="text" id="author" placeholder="Author" required />
+            <input type="number" id="year" placeholder="Year" required />
+            <button type="submit">Add Book</button>
+        </form>
     `;
-    libraryDiv.innerHTML += formHTML;
+    mainContainer.appendChild(formContainer);
 
-    // Then list books
+    // Library (book cards) below
+    const libraryDiv = document.createElement("div");
+    libraryDiv.id = "library";
+    mainContainer.appendChild(libraryDiv);
+
+    // Then render books
     books.forEach(book => {
         let bookDiv = document.createElement("div");
         bookDiv.classList.add("book");
@@ -61,30 +65,6 @@ function displayBooks() {
             form.reset();
         }
     });
-}
-
-// Function to add a new book
-function addBook(title, author, year) {
-    const newBook = {
-        id: Date.now(), // Unique ID
-        title,
-        author,
-        year,
-        isAvailable: true
-    };
-    books.push(newBook);
-    saveBooks();
-    displayBooks();
-}
-
-// Function to borrow a book
-function borrowBook(bookId) {
-    const book = books.find(book => book.id === bookId);
-    if (book && book.isAvailable) {
-        book.isAvailable = false;
-        saveBooks();
-        displayBooks();
-    }
 }
 
 // Function to return a book
