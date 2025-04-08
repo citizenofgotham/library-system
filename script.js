@@ -67,15 +67,26 @@ function displayBooks() {
     });
 }
 
+// Function to borrow a book
+function borrowBook(bookId) {
+    const book = books.find(book => book.id === bookId);
+    if (book && book.isAvailable) {
+        book.isAvailable = false;  // Mark the book as borrowed
+        saveBooks();               // Save the updated books list to localStorage
+        displayBooks();            // Re-render the books to reflect the updated status
+    }
+}
+
 // Function to return a book
 function returnBook(bookId) {
     const book = books.find(book => book.id === bookId);
     if (book && !book.isAvailable) {
-        book.isAvailable = true;
-        saveBooks();
-        displayBooks();
+        book.isAvailable = true;   // Mark the book as available again
+        saveBooks();               // Save the updated books list to localStorage
+        displayBooks();            // Re-render the books to reflect the updated status
     }
 }
+
 
 // Function to delete a book
 function deleteBook(bookId) {
