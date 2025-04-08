@@ -18,6 +18,11 @@ h1 {
     margin-top: 20px;
 }
 
+formContainer {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 .book {
     border: 1px solid #ddd;
     border-radius: 8px;
