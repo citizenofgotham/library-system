@@ -24,7 +24,11 @@ h1 {
     border-bottom: 2px solid #ccc;
 }
 
-
+.book{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Optional: centers contents horizontally */
+}
 .book {
     border: 1px solid #ddd;
     border-radius: 8px;
