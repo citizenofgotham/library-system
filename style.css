@@ -15,10 +15,10 @@ h1 {
 /* Add Book Card */
 #formContainer {
   background-color: #ffffff;
-  padding: 25px;
+  padding: 20px;
   margin: 0 auto 30px;
-  max-width: 500px;
-  border-radius: 16px;
+  max-width: 400px;
+  border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
@@ -42,9 +42,9 @@ h1 {
 }
 
 #formContainer h3 {
-  font-size: 22px;
+  font-size: 20px;
   color: #2c3e50;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 #formContainer input {
@@ -57,19 +57,19 @@ h1 {
 }
 
 #formContainer button {
-  background-color: #4caf50;
+  background-color: #ff8fab;
   color: white;
-  padding: 12px 20px;
+  padding: 10px 18px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
   margin-top: 10px;
   transition: background-color 0.3s ease;
 }
 
 #formContainer button:hover {
-  background-color: #43a047;
+  background-color: #fb6f92;
 }
 
 /* Book grid */
